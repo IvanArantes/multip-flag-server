@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     [MessageHandler((ushort)ClientToServerId.input)]
     private static void Input(ushort fromClientId, Message message)
-    {
+    {  
         if (list.TryGetValue(fromClientId, out Player player))
             player.Movement.SetInput(message.GetBools(6), message.GetVector3());
     }
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     [MessageHandler((ushort)ClientToServerId.name)]
     private static void Name(ushort fromClientId, Message message)
-    {
+    { 
         Spawn(fromClientId, message.GetString());
     }
 

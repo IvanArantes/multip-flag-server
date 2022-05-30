@@ -56,7 +56,10 @@ public class NetworkManager : MonoBehaviour
 
     private void PlayerLeft(object sender, ClientDisconnectedEventArgs e)
     {
-        Destroy(Player.list[e.Id].gameObject);
+                if (Player.list.TryGetValue(e.Id, out Player player))
+        {
+            Destroy(Player.list[e.Id].gameObject);
+        }
     }
     private void FixedUpdate()
     {

@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Initialize()
     {
-
         gravityAcceleration = gravity * Time.fixedDeltaTime * Time.fixedDeltaTime;
         moveSpeed = movementSpeed * Time.fixedDeltaTime;
         jumpSpeed = Mathf.Sqrt(jumpHeight * -2f * gravityAcceleration);
@@ -100,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         message.AddUShort(player.Id);
         message.AddVector3(transform.position);
         message.AddVector3(camProxy.forward);
+        Debug.Log("sending move");
         NetworkManager.Singleton.Server.SendToAll(message);
     }
 }
